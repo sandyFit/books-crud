@@ -1,0 +1,92 @@
+[
+    {
+        "Id": 1,
+        "Title": "The Great Gatsby",
+        "Author": "F. Scott Fitzgerald",
+        "ISBN": "9780743273565",
+        "PrintLength": 180,
+        "Publisher": "Scribner",
+        "Description": "A tragic story of wealth, love, and the American Dream."
+    },
+    {
+        "Id": 2,
+        "Title": "To Kill a Mockingbird",
+        "Author": "Harper Lee",
+        "ISBN": "9780061120084",
+        "PrintLength": 324,
+        "Publisher": "Harper Perennial Modern Classics",
+        "Description": "A powerful tale of racial injustice in the Deep South."
+    },
+    {
+        "Id": 3,
+        "Title": "1984",
+        "Author": "George Orwell",
+        "ISBN": "9780451524935",
+        "PrintLength": 328,
+        "Publisher": "Signet Classics",
+        "Description": "A dystopian vision of totalitarian control and surveillance."
+    },
+    {
+        "Id": 4,
+        "Title": "Pride and Prejudice",
+        "Author": "Jane Austen",
+        "ISBN": "9780141439518",
+        "PrintLength": 279,
+        "Publisher": "Penguin Classics",
+        "Description": "A witty romance exploring class, pride, and misunderstandings."
+    },
+    {
+        "Id": 5,
+        "Title": "Moby-Dick",
+        "Author": "Herman Melville",
+        "ISBN": "9781503280786",
+        "PrintLength": 585,
+        "Publisher": "CreateSpace Independent Publishing",
+        "Description": "The epic quest of Captain Ahab to hunt the white whale."
+    },
+    {
+        "Id": 6,
+        "Title": "The Catcher in the Rye",
+        "Author": "J.D. Salinger",
+        "ISBN": "9780316769488",
+        "PrintLength": 277,
+        "Publisher": "Little, Brown and Company",
+        "Description": "A rebellious teenager’s journey through New York City."
+    },
+    {
+        "Id": 7,
+        "Title": "The Hobbit",
+        "Author": "J.R.R. Tolkien",
+        "ISBN": "9780547928227",
+        "PrintLength": 310,
+        "Publisher": "Mariner Books",
+        "Description": "Bilbo Baggins embarks on a grand adventure with dwarves."
+    },
+    {
+        "Id": 8,
+        "Title": "Fahrenheit 451",
+        "Author": "Ray Bradbury",
+        "ISBN": "9781451673319",
+        "PrintLength": 194,
+        "Publisher": "Simon & Schuster",
+        "Description": "A society where books are banned and burned by firemen."
+    },
+    {
+        "Id": 9,
+        "Title": "Jane Eyre",
+        "Author": "Charlotte Brontë",
+        "ISBN": "9780141441146",
+        "PrintLength": 507,
+        "Publisher": "Penguin Classics",
+        "Description": "A young woman’s struggle for love, independence, and identity."
+    },
+    {
+        "Id": 10,
+        "Title": "Brave New World",
+        "Author": "Aldous Huxley",
+        "ISBN": "9780060850524",
+        "PrintLength": 268,
+        "Publisher": "Harper Perennial Modern Classics",
+        "Description": "A futuristic society driven by technology, control, and pleasure."
+    }
+]

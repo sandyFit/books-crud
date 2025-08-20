@@ -1,6 +1,7 @@
 const express = require('express');
 const { logger } = require('./logger');
 const pinoHttp = require('pino-http');
+const bookRoutes = require('./routes/bookRoutes');
 
 const app = express();
 // Parse request body to JSON
@@ -26,5 +27,7 @@ app.use(
 
     })
 );
+
+app.use('/api/v1/books', bookRoutes);
 
 module.exports = { app };
