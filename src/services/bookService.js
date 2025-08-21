@@ -42,10 +42,39 @@ async function getBookById(bookId) {
     }
 }
 
+async function updateBook(bookId, updateData) {
+    try {
+        const books = await openFile();
+        const bookIndex = books.findIndex(b => b.Id === Number(bookId));
+
+        if (bookIndex === -1) {
+            logger.warn(`Book with Id ${bookId} not found`);
+            return null;
+        }
+
+        // Merge existing with updates
+        books[bookIndex] = {
+            ...books[bookIndex],
+            ...updateData
+        };
+
+        await fs.writeFile(BOOKS_FILE, JSON.stringify(books, null, 2));
+
+        logger.info(`Book with Id ${bookId} updated successfully`);
+        return books[bookIndex];
+
+    } catch (error) {
+        logger.error(error, 'Failed to update book');
+        return null;
+    }
+}
+
+
 
 module.exports = {
     openFile,
     getBooks,
-    getBookById
+    getBookById, 
+    updateBook
 };
 

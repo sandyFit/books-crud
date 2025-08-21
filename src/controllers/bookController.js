@@ -39,8 +39,35 @@ async function getBookById(req, res) {
     }
 }
 
+async function updateBook(req, res) {
+    const { id } = req.params;
+    if (!id) {
+        logger.warn('Book ID is required');
+        return res.status(400).json({ message: 'Book ID is required' });
+    }
+
+    try {
+        const updatedBook = await bookService.updateBook(id, req.body);
+
+        if (!updatedBook) {
+            return res.status(404).json({ message: `Book with ID ${id} not found` });
+        }
+
+        res.status(200).json({
+            message: 'Book updated successfully',
+            data: updatedBook
+        });
+
+    } catch (error) {
+        logger.error(error, 'Failed to update book');
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+
 
 module.exports = {
     getBooks,
-    getBookById
+    getBookById,
+    updateBook
 }
