@@ -12,10 +12,35 @@ async function getBooks(req, res) {
     } catch (error) {
         logger.error(error, "Failed to read books");
         res.status(500).json({ message: "Server error" });
-    }
-    
+    }    
 }
 
+async function getBookById(req, res) {
+    const { id } = req.params;
+    if (!id) {
+        logger.warn('Book ID is required');
+        return res.status(400).json({ message: 'Book ID is required' });
+    }
+
+    try {
+        const book = await bookService.getBookById(id);
+
+        if (!book) {
+            return res.status(404).json({ message: `Book with ID ${id} not found` });
+        }
+
+        res.status(200).json({
+            message: 'Book fetched successfully',
+            data: book
+        });
+    } catch (error) {
+        logger.error(error, 'Failed to fetch book');
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+
 module.exports = {
-    getBooks
+    getBooks,
+    getBookById
 }

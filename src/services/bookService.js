@@ -24,8 +24,28 @@ async function getBooks() {
     }
 }
 
+async function getBookById(bookId) {
+    try {
+        const books = await openFile();
+        const book = books.find(b => b.Id === Number(bookId));
+
+        if (!book) {
+            logger.warn(`Book with Id ${bookId} not found`);
+            return null;
+        }
+
+        logger.info(`Book with Id ${bookId} fetched successfully`);
+        return book;
+    } catch (error) {
+        logger.error(error, 'Failed to fetch book');
+        return null;
+    }
+}
+
+
 module.exports = {
     openFile,
-    getBooks
+    getBooks,
+    getBookById
 };
 
