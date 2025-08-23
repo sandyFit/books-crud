@@ -88,13 +88,5 @@
     "PrintLength": 268,
     "Publisher": "Harper Perennial Modern Classics",
     "Description": "A futuristic society driven by technology, control, and pleasure."
-  },
-  {
-    "Id": 11,
-    "Title": "Love and Prejudice",
-    "Author": "Jane Doe",
-    "Description": "A modern retelling of a classic love story.",
-    "PrintLength": 321,
-    "Publisher": "OpenAI Press"
   }
 ]

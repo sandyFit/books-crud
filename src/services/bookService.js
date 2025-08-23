@@ -218,7 +218,27 @@ async function updateBook(bookId, updateData) {
     }
 }
 
+async function deleteBook(bookId) {
+    try {
+        const books = await openFile();
+        const bookIndex = books.findIndex(b => b.Id === Number(bookId));
 
+        if (bookIndex === -1) {
+            logger.warn(`Book with Id ${bookId} not found`);
+            return null;
+        }
+
+        const deletedBook = books.splice(bookIndex, 1)[0];
+
+        await fs.writeFile(BOOKS_FILE, JSON.stringify(books, null, 2));
+
+        logger.info(`Book with Id ${bookId} deleted successfully`);
+        return deletedBook;
+    } catch (error) {
+        logger.error(error, "Failed to delete book");
+        return null;
+    }
+}
 
 
 module.exports = {
@@ -226,6 +246,7 @@ module.exports = {
     registerBook,
     getBooks,
     getBookById, 
-    updateBook
+    updateBook,
+    deleteBook
 };
 
