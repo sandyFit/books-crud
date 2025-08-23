@@ -15,6 +15,21 @@ async function getBooks(req, res) {
     }    
 }
 
+async function registerBook(req, res) {
+    try {
+        const newBook = await bookService.registerBook(req.body);
+        if (!newBook) {
+            return res.status(400).json({ error: 'Failed to register book' })
+        }
+        res.status(201).json({
+            message: "Book registered successfully",
+            data: newBook
+        })
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
 async function getBookById(req, res) {
     const { id } = req.params;
     if (!id) {
@@ -68,6 +83,7 @@ async function updateBook(req, res) {
 
 module.exports = {
     getBooks,
+    registerBook,
     getBookById,
     updateBook
 }

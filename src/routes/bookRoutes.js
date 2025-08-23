@@ -3,6 +3,8 @@ const { logger } = require('../logger');
 const express = require('express');
 const router = express.Router();
 
+router.post('/', bookController.registerBook);
+
 router.get('/', bookController.getBooks);
 
 router.get('/:id', bookController.getBookById);

@@ -31,6 +31,54 @@ async function openFile() {
 }
 
 /**
+ * Register a book
+ * 
+ * This function:
+ * - Creates a new book 
+ * - Persists the new data in the JSON file.
+ * 
+ * @async
+ * @function registerBook
+ * @param {Object} book 
+ * @param {string} [book.Title] - title of the book.
+ * @param {string} [book.Author] - author of the book.
+ * @param {string} [book.Description] - description of the book.
+ * @param {number} [book.PrintLength] - page count of the book.
+ * @param {string} [book.Publisher] - publisher of the book.
+ *
+ * @returns {Promise<Object|null>} Returns the new book object if successful,
+ * or `null` if the book was not found or no valid fields were provided.
+ */
+async function registerBook(book) {
+    try {
+        const books = await openFile();
+
+        // Generate a new unique Id
+        const newId = books.length > 0 ? Math.max(...books.map(b => b.Id)) + 1 : 1;
+
+        const newBook = {
+            Id: newId,
+            Title: book.Title || "Untitled",
+            Author: book.Author || "Unknown",
+            Description: book.Description || "",
+            PrintLength: book.PrintLength || 0,
+            Publisher: book.Publisher || ""
+        };
+
+        books.push(newBook);
+
+        await fs.writeFile(BOOKS_FILE, JSON.stringify(books, null, 2));
+
+        logger.info(`Book with Id ${newId} registered successfully`);
+        return newBook;
+    } catch (error) {
+        logger.error(error, "Failed to register book");
+        return null;
+    }
+}
+
+
+/**
  * Retrieves the full list of books.
  *
  * This function:
@@ -175,6 +223,7 @@ async function updateBook(bookId, updateData) {
 
 module.exports = {
     openFile,
+    registerBook,
     getBooks,
     getBookById, 
     updateBook
